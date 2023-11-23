@@ -1,0 +1,48 @@
+.content-div {
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
+.login-panel-div {
+    width: 500px;
+    height: 300px;
+    background-color: #22232c;
+    border-radius: 10px;
+    margin: 100px auto 0;
+}
+
+
+.input-login-form {
+    width: 90%;
+    height: 50%;
+    color: white;
+    margin: 20px;
+}
+
+.input-panel-box {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.panel-log-button-div {
+    width: 100%;
+    height: 40%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.panel-log-button {
+    width: 80%;
+    height: 40px;
+    white-space: nowrap;
+    background-color: #0c3ee0;
+    color: white;
+}
+
+.panel-log-button:hover {
+    background-color: #4970f8;
+    color: white;
+}

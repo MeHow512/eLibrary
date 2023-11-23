@@ -1,0 +1,34 @@
+{% extends 'main_page.html' %}
+
+{% block head %}
+    {{ super() }}
+
+    <title>Strona Główna</title>
+
+     <link rel="stylesheet" type="text/css" href="static/css/login.css">
+{% endblock %}
+
+
+
+{% block navbar %}
+    <div class="navbar-div">
+        {% block brand_alerts %}
+            {{ super() }}
+        {% endblock%}
+
+        <h3 class="ms-auto">Witaj, {{ session['user_data']['login'] }}</h3>
+        <div style="margin-left: 30px">
+            <a href="{{ url_for('logout') }}" class="btn ms-auto log-reg-buttons">Wyloguj się</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="content-div">
+    </div>
+
+    {% block base_scripts %}
+        {{ super() }}
+    {% endblock %}
+
+{% endblock %}
