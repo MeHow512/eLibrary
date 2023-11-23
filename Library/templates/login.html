@@ -1,0 +1,47 @@
+{% extends 'main_page.html' %}
+
+{% block head %}
+    {{ super() }}
+
+    <title>Logowanie</title>
+
+    <link rel="stylesheet" type="text/css" href="static/css/login.css">
+{% endblock %}
+
+
+
+{% block navbar %}
+    <div class="navbar-div">
+        {% block brand_alerts %}
+            {{ super() }}
+        {% endblock%}
+
+        <a href="{{ url_for('register') }}" class="btn ms-auto log-reg-buttons">Zarejestruj się</a>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="content-div">
+        <div class="login-panel-div">
+            <form class="input-login-form" method="POST" action="{{ url_for('login') }}">
+                <div class="input-panel-box">
+                    <label for="email-login-box" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="email-login-box" name="email">
+                </div>
+                <div class="input-panel-box">
+                    <label for="password-login-box" class="form-label">Hasło:</label>
+                    <input type="password" class="form-control" id="password-login-box" name="password">
+                </div>
+                <div class="panel-log-button-div">
+                    <button type="submit" class="btn panel-log-button" id="login-button" disabled>Zaloguj się</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% block base_scripts %}
+        {{ super() }}
+    {% endblock %}
+
+    <script src="static/js/login.js"></script>
+{% endblock %}

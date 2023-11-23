@@ -1,0 +1,55 @@
+{% extends 'main_page.html' %}
+
+{% block head %}
+    {{ super() }}
+
+    <title>Rejestracja</title>
+
+    <link rel="stylesheet" type="text/css" href="static/css/register.css">
+{% endblock %}
+
+
+
+{% block navbar %}
+    <div class="navbar-div">
+        {% block brand_alerts %}
+            {{ super() }}
+        {% endblock%}
+
+        <a href="{{ url_for('login') }}" class="btn ms-auto log-reg-buttons">Zaloguj się</a>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="content-div">
+        <div class="register-panel-div">
+            <form class="input-register-form" method="POST" action="{{ url_for('register') }}">
+                <div class="input-panel-box">
+                    <label for="login-register-box" class="form-label">Podaj Login:</label>
+                    <input type="text" class="form-control" id="login-register-box" name="login">
+                </div>
+                <div class="input-panel-box">
+                    <label for="password-register-box" class="form-label">Podaj Hasło:</label>
+                    <input type="password" class="form-control" id="password-register-box" name="password">
+                </div>
+                <div class="input-panel-box">
+                    <label for="email-register-box" class="form-label">Podaj Email:</label>
+                    <input type="email" class="form-control" id="email-register-box" name="email">
+                </div>
+                <div class="input-panel-box">
+                    <label for="pesel-register-box" class="form-label">Podaj Pesel ( 11 cyfr ):</label>
+                    <input type="text" class="form-control" id="pesel-register-box" name="pesel">
+                </div>
+                <div class="panel-register-button-div">
+                    <button type="submit" class="btn panel-register-button" id="register-button" disabled>Zarejestruj się</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% block base_scripts %}
+        {{ super() }}
+    {% endblock %}
+
+    <script src="static/js/register.js"></script>
+{% endblock %}
