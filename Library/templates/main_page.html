@@ -30,6 +30,7 @@
         {% endwith %}
         {% endblock %}
 
+
         <a href="{{ url_for('register') }}" class="btn ms-auto log-reg-buttons">Zarejestruj się</a>
         <a href="{{ url_for('login') }}" class="btn log-reg-buttons">Zaloguj</a>
     </div>
@@ -38,8 +39,11 @@
 
 
     {% block content %}
-    <a href="{{url_for('login')}}">Login</a><br>
-    <a href="{{url_for('register')}}">Register</a>
+        <div class="content-div">
+            {% for _ in range(8) %}
+                <div class="book"></div>
+            {% endfor %}
+        </div>
     {% endblock %}
 
 
