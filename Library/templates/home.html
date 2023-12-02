@@ -5,18 +5,58 @@
 
     <title>Strona Główna</title>
 
-     <link rel="stylesheet" type="text/css" href="static/css/login.css">
+     <link rel="stylesheet" type="text/css" href="static/css/home.css">
 {% endblock %}
 
 
 
 {% block navbar %}
     <div class="navbar-div">
-        {% block brand_alerts %}
+        {% block navbar_content %}
             {{ super() }}
         {% endblock%}
 
+        {% block alerts_container %}
+            {{ super() }}
+        {% endblock %}
+
+        <button class="btn log-reg-buttons add-book-button" data-bs-toggle="modal" data-bs-target="#addBookModal">
+            Dodaj książkę
+        </button>
+
+        {% if session['user_data']['login'] == 'admin' %}
+            <a class="btn log-reg-buttons history-operations-button" href="/operation_history">Przejdź do historii operacji</a>
+        {% endif %}
+
+        <!--Book modal button-->
+        <div class="modal fade" id="addBookModal" tabindex="-1" aria-labelledby="add-book-modal-label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addBookModalLabel">Dodaj książkę</h5>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="modal-form-group">
+                                <label for="bookName">Nazwa książki</label>
+                                <input type="text" class="form-control" id="bookName" placeholder="Wprowadź nazwę książki">
+                            </div>
+                            <div class="modal-form-group">
+                                <label for="bookImage">Zdjęcie książki</label>
+                                <input type="file" class="form-control" id="bookImage">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="cancelAddBookModal" data-bs-dismiss="modal">Anuluj</button>
+                        <button type="button" class="btn btn-primary" id="addBookModalButton" data-bs-dismiss="modal" disabled>Dodaj</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <h3 class="ms-auto">Witaj, {{ session['user_data']['login'] }}</h3>
+
         <div style="margin-left: 30px">
             <a href="{{ url_for('logout') }}" class="btn ms-auto log-reg-buttons">Wyloguj się</a>
         </div>
@@ -25,10 +65,67 @@
 
 {% block content %}
     <div class="content-div">
-    </div>
+        <div class="books-table-div">
+            {% set booksNumber = books|length %}
+            {% set squaresInRow = 5 %}
 
+            {% if booksNumber <= squaresInRow %}
+                {% set rowsNumber = 1 %}
+            {% else %}
+                {% set rowsNumber = (booksNumber // squaresInRow) + (1 if booksNumber % squaresInRow != 0 else 0) %}
+            {% endif %}
+
+            {% set remainingBooks = booksNumber % squaresInRow %}
+
+            {% for row in range(rowsNumber) %}
+                <div class="row">
+                    {% set booksToDisplay = squaresInRow if loop.index0 < rowsNumber - 1 or remainingBooks == 0 else remainingBooks %}
+                    {% for index in range(booksToDisplay) %}
+                        {% set bookIndex = row * squaresInRow + index %}
+                        {% set book = books[bookIndex] %}
+                        <div class="book-div" data-book-id="{{ book.book_id }}" data-book-name="{{ book.book_name }}" data-book-img-name="{{ book.book_img_name }}">
+                            <div class="book-div-image" style="background-image: url('{{ temp_img_path }}{{ book.book_img_name }}');" ></div>
+                            <div class="book-div-name">{{ book.book_name }}</div>
+                            <div class="book-div-menu">
+                                <button type="button" class="btn btn-warning book-div-button book-edit-button" data-bs-toggle="modal" data-bs-target="#editBookModal-{{ book.book_id }}">Edytuj</button>
+                                <button type="button" class="btn btn-danger book-div-button book-remove-button">Usuń</button>
+                            </div>
+                        </div>
+
+                        <!--Edit books button modal-->
+                        <div class="modal fade" id="editBookModal-{{ book.book_id }}" tabindex="-1" aria-labelledby="edit-book-modal-label" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="edit-book-modal-label-{{ book.book_id }}">Edytuj książkę {{ book.book_name }}</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="modal-form-group">
+                                                <label for="editNewBookNameModal-{{ book.book_id }}">Nowa nazwa książki</label>
+                                                <input type="text" class="form-control" id="editNewBookNameModal-{{ book.book_id }}" placeholder="Wprowadź nową nazwę książki">
+                                            </div>
+                                            <div class="modal-form-group">
+                                                <label for="editNewBookImageModal-{{ book.book_id }}">Nowe zdjęcie książki</label>
+                                                <input type="file" class="form-control" id="editNewBookImageModal-{{ book.book_id }}">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" id="cancelEditBookModalButton-{{ book.book_id }}" data-bs-dismiss="modal">Anuluj</button>
+                                        <button type="button" class="btn btn-primary" id="editBookModalButton-{{ book.book_id }}" data-bs-dismiss="modal" disabled>Zapisz zmiany</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
     {% block base_scripts %}
         {{ super() }}
     {% endblock %}
 
+    <script type="module" src="static/js/home.js"></script>
 {% endblock %}

@@ -2,5 +2,6 @@
 .idea
 *.ini
 *.pyc
-
+*.env
 /database_data
+/Library/static/temp

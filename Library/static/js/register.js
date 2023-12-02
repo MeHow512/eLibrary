@@ -1,10 +1,10 @@
 $(document).ready(function() {
     /*Listens for event if user fills all input-boxes in register form and if pesel has correct fill */
-    $('#login-register-box, #email-register-box, #password-register-box, #pesel-register-box').on('input', function() {
-        const loginValue = $('#login-register-box').val().trim();
-        const emailValue = $('#email-register-box').val().trim();
-        const passwordValue = $('#password-register-box').val().trim();
-        const peselValue = $('#pesel-register-box').val().trim();
+    $('#loginRegisterBox, #emailRegisterBox, #passwordRegisterBox, #peselRegisterBox').on('input', function() {
+        const loginValue = $('#loginRegisterBox').val().trim();
+        const emailValue = $('#emailRegisterBox').val().trim();
+        const passwordValue = $('#passwordRegisterBox').val().trim();
+        const peselValue = $('#peselRegisterBox').val().trim();
         const peselRegex = /^[0-9]+$/;
         let registerButtonState = true;
 
@@ -13,6 +13,6 @@ $(document).ready(function() {
                 registerButtonState = false;
             }
         }
-        $('#register-button').prop('disabled', registerButtonState);
+        $('#registerButton').prop('disabled', registerButtonState);
     });
 });

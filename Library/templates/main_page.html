@@ -16,19 +16,22 @@
 <body>
     {% block navbar %}
     <div class="navbar-div">
-        {% block brand_alerts %}
+        {% block navbar_content %}
         <a href="{% if session.logged_in %}/home{% else %}/{% endif %}" class="navbar-brand">
             <img src="static/img/elibrary-logo.png" alt="app-logo" class="logo-img">
             <h1>eBiblioteka</h1>
         </a>
+        {% endblock %}
+
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for msg in messages %}
-                    <div id="alert-container" class="alert-container" data-display="{{ msg }}"></div>
+                    {% block alerts_container %}
+                    <div id="alertContainer" class="alert-container" data-display="{{ msg }}"></div>
+                    {% endblock %}
                 {% endfor %}
             {% endif %}
         {% endwith %}
-        {% endblock %}
 
 
         <a href="{{ url_for('register') }}" class="btn ms-auto log-reg-buttons">Zarejestruj się</a>
@@ -51,7 +54,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="static/js/main_page.js"></script>
+    <script type="module" src="static/js/main_page.js"></script>
     {% endblock %}
 </body>
 </html>

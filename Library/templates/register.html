@@ -12,7 +12,7 @@
 
 {% block navbar %}
     <div class="navbar-div">
-        {% block brand_alerts %}
+        {% block navbar_content %}
             {{ super() }}
         {% endblock%}
 
@@ -25,23 +25,23 @@
         <div class="register-panel-div">
             <form class="input-register-form" method="POST" action="{{ url_for('register') }}">
                 <div class="input-panel-box">
-                    <label for="login-register-box" class="form-label">Podaj Login:</label>
-                    <input type="text" class="form-control" id="login-register-box" name="login">
+                    <label for="loginRegisterBox" class="form-label">Podaj Login:</label>
+                    <input type="text" class="form-control" id="loginRegisterBox" name="login">
                 </div>
                 <div class="input-panel-box">
-                    <label for="password-register-box" class="form-label">Podaj Hasło:</label>
-                    <input type="password" class="form-control" id="password-register-box" name="password">
+                    <label for="passwordRegisterBox" class="form-label">Podaj Hasło:</label>
+                    <input type="password" class="form-control" id="passwordRegisterBox" name="password">
                 </div>
                 <div class="input-panel-box">
-                    <label for="email-register-box" class="form-label">Podaj Email:</label>
-                    <input type="email" class="form-control" id="email-register-box" name="email">
+                    <label for="emailRegisterBox" class="form-label">Podaj Email:</label>
+                    <input type="email" class="form-control" id="emailRegisterBox" name="email">
                 </div>
                 <div class="input-panel-box">
-                    <label for="pesel-register-box" class="form-label">Podaj Pesel ( 11 cyfr ):</label>
-                    <input type="text" class="form-control" id="pesel-register-box" name="pesel">
+                    <label for="peselRegisterBox" class="form-label">Podaj Pesel ( 11 cyfr ):</label>
+                    <input type="text" class="form-control" id="peselRegisterBox" name="pesel">
                 </div>
                 <div class="panel-register-button-div">
-                    <button type="submit" class="btn panel-register-button" id="register-button" disabled>Zarejestruj się</button>
+                    <button type="submit" class="btn panel-register-button" id="registerButton" disabled>Zarejestruj się</button>
                 </div>
             </form>
         </div>

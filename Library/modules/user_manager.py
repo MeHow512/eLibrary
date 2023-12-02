@@ -38,11 +38,11 @@ class UserManager:
         :param new_pesel: New pesel
         :return: If the user did not exist, it adds him and returns True, if he already exists, skip and returns False.
         """
-        existing_user_login = self.users_collection.find_one({'login': new_login})
-        existing_user_email = self.users_collection.find_one({'email': new_email})
-        existing_user_pesel = self.users_collection.find_one({'pesel': new_pesel})
+        existing_user_login = self.users_collection.find_one({'login': new_login}) is None
+        existing_user_email = self.users_collection.find_one({'email': new_email}) is None
+        existing_user_pesel = self.users_collection.find_one({'pesel': new_pesel}) is None
 
-        if not existing_user_login and not existing_user_email or not existing_user_pesel:
+        if existing_user_login and existing_user_email and existing_user_pesel:
             found_results = [doc for doc in self.users_collection.find().sort('_id', -1)]
             if len(found_results) > 0:
                 user_id = found_results[0]['_id'] + 1
