@@ -1,20 +1,20 @@
-// Display alert
-function showAlert(message, type) {
+/*Display alert*/
+export function showAlert(message, type) {
     const alertDiv = $('<div class="alert alert-' + type + ' alert-dismissible fade show" role="alert">'
         + message + '</div>');
 
-    $('#alert-container').append(alertDiv);
+    $('#alertContainer').append(alertDiv);
 
     alertDiv.css('opacity', 1);
 
-    // Set new alert relative to last one ( if existing )
+    /*Set new alert relative to last one ( if existing )*/
     if ($('.alert').length > 1) {
         const lastAlert = $('.alert').eq(-2);
         const lastAlertTop = parseInt(lastAlert.css('top'));
         alertDiv.css('top', (lastAlertTop) + 'px');
     }
 
-    // delay of hiding alert
+    /*Delay of hiding alert*/
     setTimeout(function() {
         alertDiv.css('opacity', 0);
         alertDiv.alert('close');
@@ -23,9 +23,9 @@ function showAlert(message, type) {
 
 /*Handle if exist communicates to display which directed by flash function*/
 $(document).ready(function() {
-    const displayMessage = $('#alert-container').attr('data-display');
+    const displayMessage = $('#alertContainer').attr('data-display');
 
-    if (displayMessage !== null) {
+    if (displayMessage !== '' && displayMessage !== null) {
         showAlert(displayMessage, 'success');
     }
 });

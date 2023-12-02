@@ -1,0 +1,63 @@
+{% extends 'main_page.html' %}
+
+{% block head %}
+    {{ super() }}
+
+    <title>Historia operacji</title>
+
+     <link rel="stylesheet" type="text/css" href="static/css/operation_history.css">
+{% endblock %}
+
+
+{% block navbar %}
+    <div class="navbar-div">
+        {% block navbar_content %}
+            {{ super() }}
+        {% endblock%}
+
+        {% block alerts_container %}
+            {{ super() }}
+        {% endblock %}
+
+
+        <a class="btn me-auto back-to-main-page-button" href="/home">Powrót do strony głównej</a>
+
+        <div style="margin-left: 30px">
+            <a href="{{ url_for('logout') }}" class="btn ms-auto log-reg-buttons">Wyloguj się</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="content-div books-table-div">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Operation</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if not operations %}
+                    <tr>
+                        <td colspan="3" class="no-operations">BRAK NOWYCH OPERACJI</td>
+                    </tr>
+                {% else %}
+                    {% for operation in operations|reverse %}
+                        <tr>
+                            <td>{{ operation['user'] }}</td>
+                            <td>{{ operation['operation'] }}</td>
+                            <td>{{ operation['timestamp'] }}</td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    {% block base_scripts %}
+        {{ super() }}
+    {% endblock %}
+
+{% endblock %}

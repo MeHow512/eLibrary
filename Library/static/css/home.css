@@ -1,0 +1,93 @@
+.content-div {
+    width: 100%;
+    height: 80%;
+}
+
+.books-table-div {
+    width: 100%;
+    height: 100%;
+    background-color: #22232c;;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow-y: scroll;
+}
+
+.add-book-button {
+    margin-left: 30px;
+    white-space: nowrap;
+    background-color: #31c508;
+    color: white;
+}
+.add-book-button:hover {
+    background-color: #42ec17;
+    color: white;
+}
+
+.history-operations-button {
+    white-space: nowrap;
+    background-color: #fc5900;
+    color: white;
+}
+
+.history-operations-button:hover {
+    background-color: #ff6811;
+    color: white;
+}
+
+.modal-form-group {
+    margin-bottom: 10px;
+}
+
+
+/*Book div styles*/
+.row {
+    display: flex;
+}
+
+.book-div {
+    width: 300px;
+    height: 450px;
+    background-color: white;
+    margin: 40px;
+    transition: box-shadow 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgb(255, 255, 255);
+}
+.book-div:hover {
+    box-shadow: 0 8px 12px rgb(12, 62, 224);
+    transform: scale(1.05);
+}
+
+.book-div-image {
+    width: 100%;
+    height: 60%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 8px 8px 0 0;
+}
+
+.book-div-name {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 8px 4px rgba(0, 0, 0, 0.1);
+}
+
+.book-div-menu {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-div-button {
+    margin: 20px;
+}

@@ -12,7 +12,7 @@
 
 {% block navbar %}
     <div class="navbar-div">
-        {% block brand_alerts %}
+        {% block navbar_content %}
             {{ super() }}
         {% endblock%}
 
@@ -25,15 +25,15 @@
         <div class="login-panel-div">
             <form class="input-login-form" method="POST" action="{{ url_for('login') }}">
                 <div class="input-panel-box">
-                    <label for="email-login-box" class="form-label">Email:</label>
-                    <input type="email" class="form-control" id="email-login-box" name="email">
+                    <label for="emailLoginBox" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="emailLoginBox" name="email">
                 </div>
                 <div class="input-panel-box">
-                    <label for="password-login-box" class="form-label">Hasło:</label>
-                    <input type="password" class="form-control" id="password-login-box" name="password">
+                    <label for="passwordLoginBox" class="form-label">Hasło:</label>
+                    <input type="password" class="form-control" id="passwordLoginBox" name="password">
                 </div>
                 <div class="panel-log-button-div">
-                    <button type="submit" class="btn panel-log-button" id="login-button" disabled>Zaloguj się</button>
+                    <button type="submit" class="btn panel-log-button" id="loginButton" disabled>Zaloguj się</button>
                 </div>
             </form>
         </div>

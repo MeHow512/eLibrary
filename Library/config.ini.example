@@ -5,4 +5,7 @@ username =
 password =
 
 [app]
+debug_mode = False
+port = 8080
+temp_books_img_path = /static/temp/book_images/
 secret_key =
