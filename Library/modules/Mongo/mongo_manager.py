@@ -61,10 +61,9 @@ class MongoManager:
                 'img_name': book_img_name
             }
 
-        found_book_by_name = self.book_collection.find_one({'name': book_name}) is not None
-        found_book_by_img_name = self.book_collection.find_one({'img_name': book_img_name}) is not None
+        found_book_by_img_name = self.book_collection.find_one({'img_name': book_img_name, 'name': book_name}) is None
 
-        if not found_book_by_name or not found_book_by_img_name:
+        if found_book_by_img_name:
             self.book_collection.insert_one(new_book)
             log.info(f"Book added successfully!")
             return True
