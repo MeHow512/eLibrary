@@ -1,10 +1,11 @@
-body {
+body, html {
     background-color: #3e6aff;
+    height: 99%;
 }
 
 .navbar-div {
     width: auto;
-    height: 20%;
+    height: 60px;
     display: flex;
     align-items: center;
     margin: 10px;
@@ -51,4 +52,108 @@ body {
 
 .close {
     display: none;
+}
+
+.content-div {
+    margin-top: 50px;
+    position: relative;
+    width: 100%;
+    height: 70%;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+
+/*Animation book styles*/
+.book {
+    position: absolute;
+    width: 140px;
+    height: 210px;
+    background-size: contain;
+    border-radius: 10px 8px 6px 16px;
+    transform: rotate(0deg);
+    animation-duration: var(--duration);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.book:after {
+    content: "";
+    position: absolute;
+    height: 26px;
+    width: 137px;
+    bottom: 3px;
+    right: 0px;
+    background: white;
+    border-radius: 16px 2px 2px 16px;
+    box-shadow: inset 2px 3px 0px 0px #E4E0CE;
+}
+
+.book:nth-child(1) {
+    animation-name: move;
+    --duration: 11s;
+    top: 10%;
+    transform: rotate(-7deg);
+    background-image: url('/static/img/home_anim_books/lego.jpg');
+}
+
+.book:nth-child(2) {
+    animation-name: move;
+    --duration: 15s;
+    top: 20%;
+    transform: rotate(5deg);
+    background-image: url('/static/img/home_anim_books/htmlcss.jpg');
+}
+
+.book:nth-child(3) {
+    animation-name: move;
+    --duration: 12s;
+    top: 30%;
+    transform: rotate(3deg);
+    background-image: url('/static/img/home_anim_books/witcher.jpg');
+}
+
+.book:nth-child(4) {
+    animation-name: move;
+    --duration: 18s;
+    top: 40%;
+    transform: rotate(7deg);
+    background-image: url('/static/img/home_anim_books/kubalebook.jpg');
+}
+
+.book:nth-child(5) {
+    animation-name: move;
+    --duration: 14s;
+    top: 50%;
+    transform: rotate(6deg);
+    background-image: url('/static/img/home_anim_books/fizyka.jpg');
+}
+
+.book:nth-child(6) {
+    animation-name: move;
+    --duration: 16s;
+    top: 60%;
+    transform: rotate(-3deg);
+    background-image: url('/static/img/home_anim_books/hobbit.jpg');
+}
+
+.book:nth-child(7) {
+    animation-name: move;
+    --duration: 21s;
+    top: 17%;
+    transform: rotate(11deg);
+    background-image: url('/static/img/home_anim_books/czystykod.jpg');
+}
+
+.book:nth-child(8) {
+    animation-name: move;
+    --duration: 17s;
+    top: 8%;
+    transform: rotate(-6deg);
+    background-image: url('/static/img/home_anim_books/harrypotter.jpg');
+}
+
+@keyframes move {
+    0% { right: -140px; }
+    100% { right: 100%; }
 }
