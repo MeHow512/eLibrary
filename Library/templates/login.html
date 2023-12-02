@@ -16,6 +16,11 @@
             {{ super() }}
         {% endblock%}
 
+        {% block alerts_container %}
+            {{ super() }}
+        {% endblock %}
+
+
         <a href="{{ url_for('register') }}" class="btn ms-auto log-reg-buttons">Zarejestruj się</a>
     </div>
 {% endblock %}

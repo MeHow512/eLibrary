@@ -3,7 +3,7 @@ export function showAlert(message, type) {
     const alertDiv = $('<div class="alert alert-' + type + ' alert-dismissible fade show" role="alert">'
         + message + '</div>');
 
-    $('#alertContainer').append(alertDiv);
+    $('.alert-container').append(alertDiv);
 
     alertDiv.css('opacity', 1);
 
@@ -23,9 +23,9 @@ export function showAlert(message, type) {
 
 /*Handle if exist communicates to display which directed by flash function*/
 $(document).ready(function() {
-    const displayMessage = $('#alertContainer').attr('data-display');
+    const displayMessage = $('.alert-container').attr('data-display');
 
-    if (displayMessage !== '' && displayMessage !== null) {
+    if (displayMessage !== '' && typeof displayMessage !== 'undefined') {
         showAlert(displayMessage, 'success');
     }
 });

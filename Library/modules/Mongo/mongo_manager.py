@@ -46,18 +46,24 @@ class MongoManager:
 
         :return: True if book does not exist in database, and False if exist
         """
-        highest_book_id = [book for book in self.book_collection.find().sort('_id', -1)]
+        try:
+            highest_book_id = [book for book in self.book_collection.find().sort('_id', -1)]
 
-        new_book = {
-            '_id': highest_book_id[0]['_id'] + 1,
-            'name': book_name,
-            'img_name': book_img_name
-        }
+            new_book = {
+                '_id': highest_book_id[0]['_id'] + 1,
+                'name': book_name,
+                'img_name': book_img_name
+            }
+        except IndexError:
+            new_book = {
+                '_id': 1,
+                'name': book_name,
+                'img_name': book_img_name
+            }
 
-        found_book_by_name = self.book_collection.find_one({'name': book_name}) is not None
-        found_book_by_img_name = self.book_collection.find_one({'img_name': book_img_name}) is not None
+        found_book_by_img_name = self.book_collection.find_one({'img_name': book_img_name, 'name': book_name}) is None
 
-        if not found_book_by_name or not found_book_by_img_name:
+        if found_book_by_img_name:
             self.book_collection.insert_one(new_book)
             log.info(f"Book added successfully!")
             return True
