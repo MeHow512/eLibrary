@@ -23,16 +23,15 @@
         </a>
         {% endblock %}
 
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for msg in messages %}
-                    {% block alerts_container %}
-                    <div id="alertContainer" class="alert-container" data-display="{{ msg }}"></div>
-                    {% endblock %}
+        {% block alerts_container %}
+            {% if get_flashed_messages() %}
+                {% for msg in get_flashed_messages() %}
+                    <div class="alert-container" data-display="{{ msg }}"></div>
                 {% endfor %}
+            {% else %}
+                <div class="alert-container" data-display=""></div>
             {% endif %}
-        {% endwith %}
-
+        {% endblock %}
 
         <a href="{{ url_for('register') }}" class="btn ms-auto log-reg-buttons">Zarejestruj się</a>
         <a href="{{ url_for('login') }}" class="btn log-reg-buttons">Zaloguj się</a>

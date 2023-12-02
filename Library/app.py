@@ -102,6 +102,7 @@ def logout():
         operation = f"Pomyślnie wylogowano użytkownika {session['user_data']['login']}!"
         session.pop('logged_in', None)
         add_operation('system', operation)
+        flash('Wylogowano!')
 
     return redirect('/')
 
