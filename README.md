@@ -7,7 +7,8 @@ performed by specific users using a special administrator account.
 
 This project is base on booting through Docker containerization.
 
-1. To run app use command blow:
+1. You have to fill **config.ini.example** and change it name to **config.ini**
+2. To run app use command blow:
 ```shell
 docker-compose up 
 ```
