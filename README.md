@@ -1,4 +1,4 @@
-## Internet programming
+## eLibrary
 
 The project presents an electronic library that allows simple management of a collection of books and viewing operations 
 performed by specific users using a special administrator account.
